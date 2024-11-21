@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+elf = "../../build_output/tb6612_logic_analyzer.ino.elf"
+firmware = "../../build_output/tb6612_logic_analyzer.ino.hex"

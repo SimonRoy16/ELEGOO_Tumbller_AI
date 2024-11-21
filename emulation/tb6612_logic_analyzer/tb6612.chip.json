@@ -1,0 +1,19 @@
+{
+  "name": "tb6612",
+  "author": "Simon Roy",
+  "pins": [
+    "AIN1",
+    "AIN2",
+    "PWMA",
+    "AO1",
+    "AO2",
+    "BIN1",
+    "BIN2",
+    "PWMB",
+    "BO1",
+    "BO2",
+    "STBY",
+    "GND"
+  ],
+  "controls": []
+}

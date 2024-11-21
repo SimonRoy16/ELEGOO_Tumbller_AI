@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "author": "Simon Roy",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-nano", "id": "nano", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic1",
+      "top": -134.05,
+      "left": 211.2,
+      "attrs": { "channelNames": "AIN1,AIN2,STBY,PWMA,AO1,AO2" }
+    },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": 0, "left": 181.8, "attrs": {} },
+    { "type": "chip-tb6612", "id": "chip1", "top": -344.58, "left": -43.2, "attrs": {} },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic2",
+      "top": -239.65,
+      "left": 211.2,
+      "attrs": { "channelNames": "BIN1,BIN2,STBY,PWMB,BO1,BO2" }
+    }
+  ],
+  "connections": [
+    [ "logic1:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "nano:GND.2", "logic1:GND", "black", [ "v0" ] ],
+    [ "logic2:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "chip1:GND", "gnd2:GND", "black", [ "h0" ] ],
+    [ "chip1:AIN1", "logic1:D0", "green", [ "h-57.6", "v9.6" ] ],
+    [ "chip1:AIN2", "logic1:D1", "green", [ "h-48", "v211.2" ] ],
+    [ "chip1:STBY", "logic1:D2", "green", [ "h107.41", "v220.8" ] ],
+    [ "chip1:PWMA", "logic1:D3", "green", [ "h-38.4", "v230.4" ] ],
+    [ "chip1:AO1", "logic1:D4", "green", [ "h-28.8", "v220.8" ] ],
+    [ "chip1:AO2", "logic1:D5", "green", [ "h-19.2", "v220.8" ] ],
+    [ "nano:2", "logic1:D0", "green", [ "v0" ] ],
+    [ "nano:3", "logic1:D1", "green", [ "v0" ] ],
+    [ "nano:5", "logic1:D3", "green", [ "v0" ] ],
+    [ "chip1:BIN1", "logic2:D0", "green", [ "h-9.6", "v38.4" ] ],
+    [ "chip1:BIN2", "logic2:D1", "green", [ "v0", "h11.41", "v67.2" ] ],
+    [ "chip1:STBY", "logic2:D2", "green", [ "h107.41", "v115.2" ] ],
+    [ "chip1:PWMB", "logic2:D3", "green", [ "h21.01", "v96" ] ],
+    [ "chip1:BO1", "logic2:D4", "green", [ "h30.61", "v115.2" ] ],
+    [ "chip1:BO2", "logic2:D5", "green", [ "h40.21", "v134.4" ] ],
+    [ "nano:6", "logic2:D0", "green", [ "v0" ] ],
+    [ "nano:7", "logic2:D1", "green", [ "v0" ] ],
+    [ "nano:9", "logic2:D3", "green", [ "v0" ] ],
+    [ "nano:13", "logic1:D2", "green", [ "v14.4", "h-29.3", "v-182.4", "h-9.6" ] ]
+  ],
+  "dependencies": {}
+}
