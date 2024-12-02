@@ -1,0 +1,17 @@
+---
+BasedOnStyle: LLVM
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: 'false'
+BreakBeforeBraces: Allman
+ColumnLimit: '120'
+IndentCaseLabels: 'true'
+IndentPPDirectives: AfterHash
+IndentWidth: '4'
+IndentWrappedFunctionNames: 'true'
+PointerAlignment: Left
+TabWidth: '4'
+UseTab: Never
+
+...

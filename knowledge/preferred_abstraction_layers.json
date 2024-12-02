@@ -1,0 +1,80 @@
+{
+    "name": "Preferred abstraction layers",
+    "description": "This document contains the preferred abstraction layers that the generation algorithm shall implement as part of the C source code generation.",
+    "layers": [
+        {
+            "name": "Real-Time Operating System",
+            "acronym": "RTOS",
+            "hierarchy": 1,
+            "description": "This layer manages microcontroller hardware resources and provides essential services for application execution.",
+            "examples": [
+                "Microcontroller power-up self-test and system initialization",
+                "Existing Real-Time Operating Systems (e.g., FreeRTOS, Zephyr)",
+                "Task scheduling and synchronization mechanisms",
+                "Interrupt handling",
+                "Resource allocation and management",
+                "CPU usage management and monitoring",
+                "Stack memory usage management and monitoring"
+            ]
+        },
+        {
+            "name": "Hardware",
+            "acronym": "HW",
+            "hierarchy": 2,
+            "description": "This layer contains any code pertaining to hardware.",
+            "examples": [
+                "Microcontroller register access",
+                "Hardware parameters such as circuit-dependent gains, delays, time constants, etc",
+                "Drivers for hardware circuits such as latches and comparators."
+            ]
+        },
+        {
+            "name": "Inputs and Outputs",
+            "acronym": "IO",
+            "hierarchy": 3,
+            "description": "This layer contains any code pertaining to input and output peripherals.",
+            "examples": [
+                "Digital communication streams such as UART, I2C, SPI, CAN, USB, etc",
+                "Access to digital pins, configured either as inputs or outputs",
+                "Analog to Digital Converters (ADC) and Digital to Analog Converters (DAC)",
+                "Waveform drivers such as PWM, input capture, and pulse generation."
+            ]
+        },
+        {
+            "name": "Devices",
+            "acronym": "dev",
+            "hierarchy": 4,
+            "description": "This layer contains the drivers for the devices on the circuit",
+            "examples": [
+                "EEPROM memory devices",
+                "Gate drivers for power electronics",
+                "External smart monitors",
+                "External watchdogs",
+                "Communication modules (e.g. Bluetooth, WiFi)"
+            ]
+        },
+        {
+            "name": "Application",
+            "acronym": "app",
+            "hierarchy": 5,
+            "description": "This layer contains all the code for the application layer (business logic).",
+            "examples": [
+                "User interface logic",
+                "Application-specific protocols and data processing",
+                "Configuration and calibration routines"
+            ]
+        },
+        {
+            "name": "Libraries",
+            "acronym": "lib",
+            "hierarchy": 6,
+            "description": "This layer contains all the code for implementing libraries.",
+            "examples": [
+                "Math and trigonomtrical libraries",
+                "Interpolation libraries",
+                "Filter implementation libraries",
+                "Digital encoding and decoding libraries"
+            ]
+        }
+    ]
+}

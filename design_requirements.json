@@ -1,0 +1,421 @@
+{
+    "name": "Design requirements",
+    "description": "This document contains the design requirements of the Elegoo Tumbller AI project.",
+    "requirements": [
+        {
+            "id": "1",
+            "name": "Product description",
+            "description": "This requirement describes key features of the Elegoo Tumbller robot.",
+            "subrequirements": [
+                {
+                    "id": "1.1",
+                    "name": "Physical description",
+                    "description": "The robot is a self-balancing robotic kit consisting of 2 wheels, a chassis, and a control platform. The wheels are driven by two electric motors. The chassis is made of aluminium and plastic, and has a compact vertical design."
+                },
+                {
+                    "id": "1.2",
+                    "name": "Control platform",
+                    "description": "The main controller of the robot is an Arduino nano board.",
+                    "datasheet": "hardware/datasheets/arduino_nano.pdf",
+                    "subrequirements": [
+                        {
+                            "id": "1.2.1",
+                            "name": "Microcontroller",
+                            "description": "The microcontroller used on the controller platform is an ATmega328P-AU from Microchip Technology.",
+                            "datasheet": "hardware/datasheets/ATmega-328-P.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "1.3",
+                    "name": "Power Supply",
+                    "description": "The robot is powered by a 3S rechargeable Li-ion battery."
+                },
+                {
+                    "id": "1.4",
+                    "name": "Sensors",
+                    "description": "This requirement describes the sensors available on the robot platform.",
+                    "subrequirements": [
+                        {
+                            "id": "1.4.1",
+                            "name": "Battery voltage sensor",
+                            "description": "This requirement describes the battery voltage sensor.",
+                            "subrequirements": [
+                                {
+                                    "id": "1.4.1.1",
+                                    "name": "Type",
+                                    "description": "The battery voltage sensor is implemented with a resistive voltage divider."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.4.2",
+                            "name": "IR sensors",
+                            "description": "This requirement describes the IR sensors of the robot.",
+                            "datasheet": "hardware/datasheets/IRM-56384.PDF",
+                            "subrequirements": [
+                                {
+                                    "id": "1.4.2.1",
+                                    "name": "Location",
+                                    "description": "The IR sensors are located on the front-left and front-right corners of the robot."
+                                },
+                                {
+                                    "id": "1.4.2.2",
+                                    "name": "Orientation",
+                                    "description": "The IR sensors are oriented at 45 degrees towards the sides."
+                                },
+                                {
+                                    "id": "1.4.2.3",
+                                    "name": "Type",
+                                    "description": "The IR sensors part number is IRM-56384."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.4.3",
+                            "name": "Ultrasonic sensor",
+                            "description": "This requirement describes the ultrasonic sensor of the robot.",
+                            "datasheet": "hardware/datasheets/HC-SR04.pdf",
+                            "subrequirements": [
+                                {
+                                    "id": "1.4.3.1",
+                                    "name": "Location",
+                                    "description": "The ultrasonic sensor is located at the front of the robot."
+                                },
+                                {
+                                    "id": "1.4.3.2",
+                                    "name": "Orientation",
+                                    "description": "The ultrasonic sensor is oriented to the forward direction of the robot, parallel to the floor while the robot is balancing."
+                                },
+                                {
+                                    "id": "1.4.3.3",
+                                    "name": "Type",
+                                    "description": "The ultrasonic sensor is a HC-SR04."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.4.4",
+                            "name": "Inertial Measurement Unit (IMU)",
+                            "description": "The robot uses an IMU for acceleration and orientation tracking.",
+                            "datasheet": "hardware/datasheets/MPU-6050.pdf",
+                            "subrequirements": [
+                                {
+                                    "id": "1.4.4.1",
+                                    "name": "3-axis accelerometer",
+                                    "description": "The IMU includes a 3-axis accelerometer to detect the robot's acceleration."
+                                },
+                                {
+                                    "id": "1.4.4.2",
+                                    "name": "3-axis gyroscope",
+                                    "description": "The IMU includes a 3-axis gyroscope to detect the robot's angular momentum."
+                                },
+                                {
+                                    "id": "1.4.4.3",
+                                    "name": "Type",
+                                    "description": "The IMU is a MPU-6050."
+                                },
+                                {
+                                    "id": "1.4.4.4",
+                                    "name": "Communication",
+                                    "description": "The IMU communicates with the main controller via I2C."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.4.5",
+                            "name": "Motor encoders",
+                            "description": "The robot uses motor encoders to track the position and speed of the motors.",
+                            "datasheet": "hardware/datasheets/GA37-520.pdf",
+                            "subrequirements": [
+                                {
+                                    "id": "1.4.5.1",
+                                    "name": "Type",
+                                    "description": "The motor encoders are hall effect quadrature encoders."
+                                },
+                                {
+                                    "id": "1.4.5.2",
+                                    "name": "Resolution",
+                                    "description": "The motor encoders have a resolution of 26 counts per revolution."
+                                },
+                                {
+                                    "id": "1.4.5.3",
+                                    "name": "Partial connection",
+                                    "description": "Only one line of the quadrature encoder is connected to the controller, per motor."
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "1.5",
+                    "name": "Actuators",
+                    "description": "This requirement describes the 2 motors controlling the motion of the robot.",
+                    "subrequirements": [
+                        {
+                            "id": "1.5.1",
+                            "name": "Type",
+                            "description": "The motors are brushed DC motors of type GA37-520.",
+                            "datasheet": "hardware/datasheets/GA37-520.pdf"
+                        },
+                        {
+                            "id": "1.5.2",
+                            "name": "Controller type",
+                            "description": "The motors are sharing a dual H-Bridge controller of type TB6612FNG.",
+                            "datasheet": "hardware/datasheets/TB6612FNG.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "1.6",
+                    "name": "Push button",
+                    "description": "The robot has a momentary push button to allow the user to switch between modes of operation."
+                },
+                {
+                    "id": "1.7",
+                    "name": "Communication ports",
+                    "description": "The robot has access to various communication ports to transmit and receive information.",
+                    "subrequirements": [
+                        {
+                            "id": "1.7.1",
+                            "name": "UART",
+                            "description": "The robot can be connected to a computer via UART."
+                        },
+                        {
+                            "id": "1.7.2",
+                            "name": "Bluetooth",
+                            "description": "This requirement describes the Bluetooth communication port.",
+                            "datasheet": "hardware/datasheets/BT16-Bluetooth.pdf",
+                            "subrequirements": [
+                                {
+                                    "id": "1.7.2.1",
+                                    "name": "Type",
+                                    "description": "The Bluetooth communication port is a BT-16 module."
+                                }
+                            ]
+                        },
+                        {
+                            "id": "1.7.3",
+                            "name": "IR",
+                            "description": "The robot can receive information using an IR remote."
+                        }
+                    ]
+                },
+                {
+                    "id": "1.8",
+                    "name": "LEDs",
+                    "description": "This requirement describes the LEDs of the robot platform.",
+                    "subrequirements": [
+                        {
+                            "id": "1.8.1",
+                            "name": "Built-in LED",
+                            "description": "The Arduino shall provide a built-in LED, connected to the microcontroller according to the pinout diagram"
+                        },
+                        {
+                            "id": "1.8.2",
+                            "name": "Multicolor external LEDs",
+                            "description": "There are four digital, multicolor LEDs located at each corner or the robot.",
+                            "datasheet": "hardware/datasheets/WS2812B.pdf"
+                        }
+                    ]
+                },
+                {
+                    "id": "1.9",
+                    "name": "Smartphone application",
+                    "description": "The product comes with a Smartphone application allowing remote control and operation of the robot via the Bluetooth interface."
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Project description",
+            "description": "This requirement describes the present Elegoo Tumbller project.",
+            "subrequirements": [
+                {
+                    "id": "2.1",
+                    "name": "Purpose",
+                    "description": "The purpose of this project is to generate the embedded firmware for the Elegoo Tumbller robot only using AI."
+                },
+                {
+                    "id": "2.2",
+                    "name": "Scope",
+                    "description": "The scope of the firmware generation goes from low-level mirocontroller configuration, up to higher level application modules."
+                },
+                {
+                    "id": "2.3",
+                    "name": "Inputs",
+                    "description": "This requirement describes the inputs of the project.",
+                    "subrequirements": [
+                        {
+                            "id": "2.3.1",
+                            "name": "Requirements",
+                            "description": "The project shall provide requirements that the code generation algorithm shall comply to.",
+                            "path": "./design_requirements.json"
+                        },
+                        {
+                            "id": "2.3.2",
+                            "name": "Knowledge",
+                            "description": "The project shall provide a knowledge database guiding the design principles of the code generation algorithm.",
+                            "path": "./knowledge/**/*"
+                        },
+                        {
+                            "id": "2.3.3",
+                            "name": "Hardware description",
+                            "description": "The project shall contain a hardware description of the system to which the controller is connected.",
+                            "path": "./hardware/**/*"
+                        },
+                        {
+                            "id": "2.3.4",
+                            "name": "Datasheets",
+                            "description": "The project shall provide access to the datasheets of all the components of the system to which the controller is connected. The datasheets are linked to the relevant item requirement.",
+                            "path": "./hardware/datasheets/**/*"
+                        },
+                        {
+                            "id": "2.3.5",
+                            "name": "Microcontroller pinout",
+                            "description": "The project shall provide a description of the microcontroller pinout, which identifies the function and connected module for each pin.",
+                            "path": "./hardware/arduino_pinout.xlsx"
+                        }
+                    ]
+                },
+                {
+                    "id": "2.4",
+                    "name": "Ouputs",
+                    "description": "This requirement describes the required outputs of the project.",
+                    "subrequirements": [
+                        {
+                            "ìd": "2.4.1",
+                            "name": "Build outputs",
+                            "description": "Binary outputs shall be generated in bin and hex formats."
+                        },
+                        {
+                            "id": "2.4.2",
+                            "name": "Documentation",
+                            "description": "This requirement describes the documentation that shall be produced by the generation algorithm.",
+                            "subrequirements": [
+                                {
+                                    "id": "2.4.2.1",
+                                    "name": "Code comments",
+                                    "description": "The code shall not contain comments unless absolutely necessary to explain corner cases or exceptions."
+                                },
+                                {
+                                    "id": "2.4.2.2",
+                                    "name": "Self-documenting code",
+                                    "description": "The code shall have clear structuring, interfaces, variable and function names such that the code documents itself."
+                                },
+                                {
+                                    "id": "2.4.2.4",
+                                    "name": "Code architecture",
+                                    "description": "Documentation shall include a high level diagram representation of the code structure, which includes blocks representing the major drivers and modules of the generated code, the key elements of their respective interfaces, and the information flow between them."
+                                },
+                                {
+                                    "id": "2.4.2.4",
+                                    "name": "Modules description",
+                                    "description": "For each module of the generated code, "
+                                }
+                            ]
+                        },
+                        {
+                            "id": "2.4.3",
+                            "name": "C source code",
+                            "description": "C source files shall be produced as an output of the AI generation algorithm."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Basic functionality",
+            "description": "This requirement contains all the sub-requirements that are necessary to implement the basic functionality of the Elegoo Tumbller robot.",
+            "subrequirements": [
+                {
+                    "id": "3.1",
+                    "name": "Balancing",
+                    "description": "The robot shall balance itself at all times and maintain a vertical position by controlling its motors."
+                },
+                {
+                    "id": "3.2",
+                    "name": "Moving forward",
+                    "description": "The robot shall be able to move forward upon user request."
+                },
+                {
+                    "id": "3.3",
+                    "name": "Moving backward",
+                    "description": "The robot shall be able to move backward upon user request."
+                },
+                {
+                    "id": "3.4",
+                    "name": "Turning left",
+                    "description": "The robot shall be able to turn left upon user request."
+                },
+                {
+                    "id": "3.5",
+                    "name": "Turning right",
+                    "description": "The robot shall be able to turn right upon user request."
+                },
+                {
+                    "id": "3.6",
+                    "name": "Stopping",
+                    "description": "The robot shall be able to stop from a moving state upon removal of the user request to move."
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Modes of operation",
+            "description": "This requirement describes the modes of operation of the Elegoo Tumbller robot.",
+            "subrequirements": [
+                {
+                    "id": "4.1",
+                    "name": "Stationary (default)",
+                    "description": "The robot can maintain a stationary position. This is the default mode of operation."
+                },
+                {
+                    "id": "4.2",
+                    "name": "IR control",
+                    "description": "The robot can be controlled using an IR remote control."
+                },
+                {
+                    "id": "4.3",
+                    "name": "Auto-follow",
+                    "description": "The robot can follow a person or an object."
+                },
+                {
+                    "id": "4.4",
+                    "name": "Obstacle avoidance",
+                    "description": "The robot can avoid obstacles."
+                },
+                {
+                    "id": "4.5",
+                    "name": "Bouncing mode",
+                    "description": "The robot can move in a bouncing mode."
+                },
+                {
+                    "id": "4.6",
+                    "name": "Glowing in different LED colors",
+                    "description": "The robot can glow in different LED colors."
+                }
+            ]
+        },
+        {
+            "id": "5",
+            "name": "C source code",
+            "description": "This section describes the requirements of the generated C source code.",
+            "subrequirements": [
+                {
+                    "id": "5.1",
+                    "name": "Output folder",
+                    "description": "The C source code shall be generated in a dedicated folder.",
+                    "path": "./firmware_ai"
+                },
+                {
+                    "id": "5.2",
+                    "name": "Code formatting",
+                    "description": "The generated C source code shall be formatted according to the provided clang format file.",
+                    "path": "./.clang-format"
+                }
+            ]
+        }
+    ]
+}
